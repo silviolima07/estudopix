@@ -444,19 +444,19 @@ def main():
           def plot_line(coluna):
             if coluna == 'Quantidade':
               title='Quantidade de Transações em Milhoes'
-              label_y = "Qtd Transações(M)"
+              label_y = "Qtd Transações()"
               temp = df.copy()
-              temp[coluna] = temp[coluna]/1000
+              temp[coluna] = temp[coluna]
             elif coluna == 'Total':
               title='Valor Total em Milhões de Reais'
-              label_y = "Total Transações(R$)"
+              label_y = "Total Transações(R$K)"
               temp = df.copy()
-              temp[coluna] = temp[coluna]/1000
+              temp[coluna] = temp[coluna]
             else:
               title='Valor Médio em Reais'
               label_y = "Media(R$)"
               temp = df.copy()
-              temp[coluna] = temp[coluna]/1000                 
+              temp[coluna] = temp[coluna]                 
             
             st.subheader(title)
             #coluna = coluna
@@ -471,7 +471,7 @@ def main():
           
           opcao = st.sidebar.radio(
     "Escolha o gráfico:",
-    ["Quantidade de Transações", "Valor Total em Milhões de Reais", "Valor Médio"])
+    ["Quantidade de Transações", "Valor Total em Reais", "Valor Médio"])
 
           if opcao == 'Quantidade de Transações':
             
@@ -480,7 +480,7 @@ def main():
             st.markdown("#### Obs:")# amplie o gráfico para ver melhor, no canto superior #direito.")
             st.markdown("##### amplie o gráfico para ver melhor, clique no canto superior direito.")
             
-          elif opcao == "Valor Total em Milhões de Reais":
+          elif opcao == "Valor Total em Reais":
             plot_line('Total')
             
             st.markdown("#### Obs:")# amplie o gráfico para ver melhor, no canto superior #direito.")
@@ -489,14 +489,15 @@ def main():
             st.markdown("### Records em 2023")       
         
             st.subheader('Maior Quantidade de Transações')
-            
-            df_max_qtd = df.loc[df.Quantidade == df.Quantidade.max()]
-            df_max_total = df.loc[df.Total == df.Total.max()]
+            temp = df.copy()
+            temp['Total'] = temp['Total']*1000
+            df_max_qtd = temp.loc[temp.Quantidade == temp.Quantidade.max()]
+            df_max_total = temp.loc[temp.Total == temp.Total.max()]
           
             st.subheader(ajuste_qt(str(df_max_qtd.Quantidade.max()))+" no Dia: "+str(df_max_qtd.Data.max()))
           
             st.subheader('Maior Valor(R$)')
-          
+
             st.subheader(ajuste_vl(str(df_max_total.Total.max()).replace('.',','))+" no Dia: "+str(df_max_total.Data.max()))
           else:
             plot_line('Media')
@@ -515,9 +516,7 @@ def main():
           
         except:
           st.write("Erro na execução da chamada da API") 
-
-          st.markdown("#### Quantidades e valores médios por dia.")
-          st.markdown("#### Valores representados em milhares de R$")          
+     
         
           
         
