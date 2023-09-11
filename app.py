@@ -94,10 +94,10 @@ def ajuste_vl(kpi):
     kpi = 'R$ '+kpi[0:3]+' Bilhoes'  
     
   elif inteiros == 11:
-    kpi = 'R$ '+kpi[0:3]+'.'+kpi[3:6]+'.'+kpi[6:]
+    kpi = 'R$ '+kpi[0:2]+'.'+kpi[2:4]+' Bilhoes'
                 
   elif inteiros == 10:
-    kpi = 'R$ '+kpi[0:1]+'.'+kpi[1]+' Bilhoes'
+    kpi = 'R$ '+kpi[0:1]+'.'+kpi[1:3]+' Bilhoes'
 
   elif inteiros == 9:
     kpi = 'R$ '+kpi[0:3]+' Milhoes'
@@ -119,7 +119,7 @@ def ajuste_qt(kpi):
   inteiros = len(kpi)
   #
   
-  #st.write("inteiros: "+str(inteiros))
+  #st.subheader("inteiros: "+str(kpi))
     
   if inteiros == 15:
     kpi = kpi[0:3]+' Bilhoes' 
@@ -134,10 +134,10 @@ def ajuste_qt(kpi):
     kpi = kpi[0:3]+' Bilhoes'  
     
   elif inteiros == 11:
-    kpi = kpi[0:3]+'.'+kpi[3:6]+'.'+kpi[6:]
+    kpi = kpi[0:2]+'.'+kpi[2:5]+' Bilhoes'
                 
   elif inteiros == 10:
-    kpi = kpi[0:1]+'.'+kpi[1]+' Bilhoes'
+    kpi = kpi[0:1]+'.'+kpi[1:3]+' Bilhoes'
 
   elif inteiros == 9:
     kpi = kpi[0:3]+' Milhoes'
@@ -146,7 +146,7 @@ def ajuste_qt(kpi):
     kpi = kpi[0:2]+'.'+kpi[2]+' Milhoes'      
 
   elif inteiros == 7:
-      kpi = kpi[0]+'.'+kpi[1]+' Milhoes'
+      kpi = kpi[0]+'.'+kpi[1:3]+' Milhoes'
  
   elif inteiros == 6:
       kpi = kpi[0:3]+' Mil' 
@@ -325,10 +325,10 @@ def main():
               kpi_vl_rc_pj = str(np.round(temp.VL_RecebedorPJ.sum(),2)).replace(".",',')
               kpi_qt_rc_pj = str(np.round(temp.QT_RecebedorPJ.sum(),2)).replace(".",',')
           
-            #st.subheader(kpi_vl_pg_pf)
-            #size = str(kpi_vl_pg_pf).split(',')
-            #st.write("inteiros: "+str(len(size[0])))
-            #st.write("decimais: "+str(len(size[1])))
+              #st.subheader(kpi_vl_pg_pf)
+              #size = str(kpi_vl_pg_pf).split(',')
+              #st.subheader("kpi_vl_pg_pf inteiros: "+str(len(size[0])))
+              #st.subheader("kpi_vl_pg_pf decimais: "+str(len(size[1])))
           
             
             
