@@ -444,7 +444,7 @@ def main():
           def plot_line(coluna):
             if coluna == 'Quantidade':
               title='Quantidade de Transações em Milhoes'
-              label_y = "Qtd Transações()"
+              label_y = "Qtd Transações"
               temp = df.copy()
               temp[coluna] = temp[coluna]
             elif coluna == 'Total':
