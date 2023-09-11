@@ -448,8 +448,8 @@ def main():
               temp = df.copy()
               temp[coluna] = temp[coluna]
             elif coluna == 'Total':
-              title='Valor Total em Milhões de Reais'
-              label_y = "Total Transações(R$K)"
+              title='Valor Total em Bilhões de Reais'
+              label_y = "Total Transações(R$)"
               temp = df.copy()
               temp[coluna] = temp[coluna]
             else:
