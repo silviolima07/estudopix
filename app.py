@@ -202,9 +202,9 @@ def main():
         col7,col8, col9 = st.columns(3)
         
         with col1:
-          st.subheader('Fontes: ')
-        with col8:
-          st.markdown('### Pix - BC')
+          st.subheader('Fonte: ')
+        with col5:
+          st.markdown('### API Pix - BC')
           st.image(pix, width=200)
         #with col5:  
         #  st.image(ibge, width=200)
@@ -427,15 +427,14 @@ def main():
               """
         st.markdown(html_page_pix_2023, unsafe_allow_html=True)
         
-        st.markdown("##### Quantidades e valores médios por dia.")
-        st.markdown("##### Valores representados em milhares de R$")
+        
 
         try:
           #pd.options.display.float_format = '{:.2f}'.format
           # df = extrair_dados(url_intra_dia)
           # df = df.rename(columns={'Horario':'index'}).set_index('index')
           # st.markdown("#### Quantidade de Transações")
-          st.markdown("##### Periodo: 24h")
+          #st.markdown("##### Periodo: 24h")
           # st.line_chart(df['QuantidadeMedia'])
           
           
@@ -470,37 +469,55 @@ def main():
                 )
             st.altair_chart((line_chart).interactive(), use_container_width=True)
           
+          opcao = st.sidebar.radio(
+    "Escolha o gráfico:",
+    ["Quantidade de Transações", "Valor Total em Milhões de Reais", "Valor Médio"])
+
+          if opcao == 'Quantidade de Transações':
+            
+            plot_line('Quantidade')
+            
+            st.markdown("#### Obs:")# amplie o gráfico para ver melhor, no canto superior #direito.")
+            st.markdown("##### amplie o gráfico para ver melhor, clique no canto superior direito.")
+            
+          elif opcao == "Valor Total em Milhões de Reais":
+            plot_line('Total')
+            
+            st.markdown("#### Obs:")# amplie o gráfico para ver melhor, no canto superior #direito.")
+            st.markdown("##### amplie o gráfico para ver melhor, clique no canto superior direito.")
+            
+            st.markdown("### Records em 2023")       
+        
+            st.subheader('Maior Quantidade de Transações')
+            
+            df_max_qtd = df.loc[df.Quantidade == df.Quantidade.max()]
+            df_max_total = df.loc[df.Total == df.Total.max()]
           
-          plot_line('Quantidade')
+            st.subheader(ajuste_qt(str(df_max_qtd.Quantidade.max()))+" no Dia: "+str(df_max_qtd.Data.max()))
           
-          plot_line('Total')
+            st.subheader('Maior Valor(R$)')
           
-          plot_line('Media')
+            st.subheader(ajuste_vl(str(df_max_total.Total.max()).replace('.',','))+" no Dia: "+str(df_max_total.Data.max()))
+          else:
+            plot_line('Media')
+            
+            st.markdown("#### Obs:")# amplie o gráfico para ver melhor, no canto superior #direito.")
+            st.markdown("##### amplie o gráfico para ver melhor, clique no canto superior direito.")
           
-          df_max_qtd = df.loc[df.Quantidade == df.Quantidade.max()]
-          df_max_total = df.loc[df.Total == df.Total.max()]
           
-          html_page_pix_records = """
-    <div style="background-color:white;padding=30px">
-        <p style='text-align:center;font-size:25px;font-weight:bold;color:white'>Records em 2023</p>
-    </div>
-              """
-          st.markdown(html_page_pix_records, unsafe_allow_html=True)   
           
-          st.subheader('Maior Quantidade de Transações')
+        
           
-          st.subheader(ajuste_qt(str(df_max_qtd.Quantidade.max()))+" no Dia: "+str(df_max_qtd.Data.max()))
-          
-          st.subheader('Maior Valor(R$)')
-          
-          st.subheader(ajuste_vl(str(df_max_total.Total.max()).replace('.',','))+" no Dia: "+str(df_max_total.Data.max()))
           
           #st.subheader(df.Media.max())
           
                              
           
         except:
-          st.write("Erro na execução da chamada da API")      
+          st.write("Erro na execução da chamada da API") 
+
+          st.markdown("#### Quantidades e valores médios por dia.")
+          st.markdown("#### Valores representados em milhares de R$")          
         
           
         
@@ -536,7 +553,7 @@ def main():
         
         st.markdown("##### Fonte dos dados: ")
         st.markdown("##### https://olinda.bcb.gov.br/olinda/servico/Pix_DadosAbertos/versao/v1/aplicacao#!/recursos")
-        #st.markdown("##### https://www.ibge.gov.br/estatisticas/downloads-estatisticas.html#")
+        st.markdown("##### https://olinda.bcb.gov.br/olinda/servico/SPI/versao/v1/aplicacao#!/recursos")
         
       
         st.subheader("Silvio Lima")
