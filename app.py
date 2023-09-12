@@ -203,7 +203,7 @@ def main():
         
         with col1:
           st.subheader('Fonte: ')
-        with col7:
+        with col2:
           st.subheader('PIX')  
         with col5:
           st.markdown('### API Pix')
