@@ -410,13 +410,21 @@ def main():
             st.altair_chart((line_chart).interactive(), use_container_width=True)
           
           
-          plot_line('QuantidadeMedia')
-          
-          plot_line('TotalMedio')
-          
-          #max_qt = df.Qua
-          
-                             
+          opcao = st.sidebar.radio(
+    "Escolha o gráfico:",
+    ["Quantidade Média de Transações", "Valor Total Médio"])
+
+          if opcao == 'Quantidade Média de Transações':
+            
+            plot_line('QuantidadeMedia')
+            
+            
+            
+          elif opcao == "Valor Total Médio":         
+            plot_line('TotalMedio')
+                 
+          st.markdown("#### Obs:")# amplie o gráfico para ver melhor, no canto superior #direito.")
+          st.markdown("##### amplie o gráfico para ver melhor, clique no canto superior direito.")                     
           
         except:
           st.write("Erro na execução da chamada da API")
