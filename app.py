@@ -204,7 +204,7 @@ def main():
         with col1:
           st.subheader('Fonte: ')
         with col5:
-          st.markdown('### API Pix - BC')
+          st.markdown('### API Pix')
           st.image(pix, width=200)
         #with col5:  
         #  st.image(ibge, width=200)
