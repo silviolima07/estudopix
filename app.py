@@ -203,6 +203,8 @@ def main():
         
         with col1:
           st.subheader('Fonte: ')
+        with col4:
+          st.subheader('PIX')  
         with col5:
           st.markdown('### API Pix')
           st.image(pix, width=220)
