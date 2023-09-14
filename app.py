@@ -187,12 +187,12 @@ def main():
            
         html_page_activiy_0 = """
     <div style="background-color:white;padding=30px">
-        <p style='text-align:center;font-size:32px;font-weight:bold;color:white'>Estudo Pix nas Cidades</p>
+        <p style='text-align:center;font-size:32px;font-weight:bold;color:white'>Estudo Pix</p>
     </div>
               """
         st.markdown(html_page_activiy_0, unsafe_allow_html=True)
         
-        st.markdown("#### Análise de dados de transações via Pix nas cidades do Brasil.")
+        st.markdown("#### Análise de dados de transações via Pix no Brasil.")
         #st.markdown("#### Dados populacionais foram acrescentados aos dados do Pix, para #checar a existência de possíveis padrões comuns entre as cidades.")
         
         flag = False
