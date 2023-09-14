@@ -44,7 +44,7 @@ df_ibge['Estado'] = df_ibge['Estado'].str.upper()
 pix = Image.open("img/pix.png")
 #ibge = Image.open("img/ibge.png")
 
-df_ibge['cidade_uf'] = df_ibge['Mun']+'-'+df_ibge['uf']
+df_ibge['cidade_uf'] = df_ibge['municipio']+'-'+df_ibge['uf']
 l_cidades = df_ibge.cidade_uf
 l_cidades = sorted(l_cidades)
 
@@ -192,7 +192,7 @@ def main():
               """
         st.markdown(html_page_activiy_0, unsafe_allow_html=True)
         
-        st.markdown("#### Análise de dados de transações feitas via Pix nas cidades do Brasil.")
+        st.markdown("#### Análise de dados de transações via Pix nas cidades do Brasil.")
         #st.markdown("#### Dados populacionais foram acrescentados aos dados do Pix, para #checar a existência de possíveis padrões comuns entre as cidades.")
         
         flag = False
@@ -202,9 +202,15 @@ def main():
         col7,col8, col9 = st.columns(3)
         
         with col1:
-          st.subheader('Fonte: ')
-        with col2:
-          st.subheader('API PIX')  
+          st.markdown('#### Fonte :  API PIX')
+                  
+        
+        with col4:
+          st.markdown('####  Análise por:')
+          st.markdown('##### - Por Cidade')
+          st.markdown('##### - Ao longo do dia')
+          st.markdown('##### - Em 2023')
+          
         with col5:
           #st.markdown('### API Pix')
           st.image(pix, width=220)
