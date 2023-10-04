@@ -340,8 +340,10 @@ def main():
           
             
             
-              col1.markdown("##### VL_PagadorPF")            
-              col1.metric("teste", ajuste_vl(kpi_vl_pg_pf), label_visibility="collapsed")
+              col1.markdown("##### VL_PagadorPF")
+              teste =  ajuste_vl(kpi_vl_pg_pf)
+              col1.markdown("### "+teste)  
+              #col1.metric("teste", ajuste_vl(kpi_vl_pg_pf), label_visibility="collapsed")
               col2.markdown("##### QT_PagadorPF")  
               col2.metric("teste", ajuste_qt(kpi_qt_pg_pf),label_visibility="collapsed")
               col3.markdown("##### VL_RecebedorPF")  
