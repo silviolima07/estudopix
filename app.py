@@ -367,7 +367,7 @@ def main():
               #col6.metric("", ajuste_qt(kpi_qt_pg_pj),label_visibility="collapsed")
               col7.markdown("##### VL_PagadorPJ")  
               teste7 =  ajuste_vl(kpi_vl_rc_pj)
-              col7.markdown("### "+teste6)   
+              col7.markdown("### "+teste7)   
               #col7.metric("", ajuste_vl(kpi_vl_rc_pj),label_visibility="collapsed")
               col8.markdown("##### QT_PagadorPJ") 
               teste8 =   ajuste_qt(kpi_qt_rc_pj)
